@@ -19,9 +19,8 @@ class BookList extends Model {
                 freezeTableName : true,
             }
         )
-
-        return sequelize;
+        return BookList;
     }
 }
 
-module.exports = BookList
+module.exports = BookList;

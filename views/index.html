@@ -8,7 +8,16 @@
         #book-list{
             display: flex;
             flex-wrap: wrap;
-            gap: 10;
+            flex-direction: row;
+            gap: 10px;
+        }
+        #book-list-item{
+            display: flex;
+            flex-direction: column;
+        }
+        img{
+            width: 140px;
+            height: 200px;
         }
     </style>
 </head>
@@ -20,8 +29,10 @@
     </form>
     <div id="book-list">
         {% for item in booklist %}
-            <img src = {{booklist.path}}/>
-            <div> {{booklist.name}} </div>
+        <div id="book-list-item">
+            <a href="/uploads/{{item.id}}"><img src = "/{{item.path}}"/></a>
+            <div> {{item.name}} </div>
+        </div>
         {% endfor %}
     </div>
 </body>
