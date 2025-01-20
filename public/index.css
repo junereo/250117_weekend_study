@@ -1,0 +1,66 @@
+
+#book-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+}
+#book-list-item{
+    display: flex;
+    flex-direction: column;
+}
+
+#book-list1{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#book-list-item1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#search{
+    padding-top: 50px;
+}
+img{
+    width: 140px;
+    height: 200px;
+}
+.image-container {
+    position: relative;  /* 부모 컨테이너 위치 설정 */
+    display: inline-block;  /* 이미지 크기에 맞춤 */
+}
+
+.image-container img {
+    display: block;  /* 기본 여백 제거 */
+    width: 100%;  /* 이미지 크기 조정 */
+    border-radius: 10px; /* 둥근 모서리 (선택 사항) */
+}
+
+.like-button {
+    position: absolute;  /* 이미지를 기준으로 버튼 위치 조정 */
+    top: 8px;  /* 상단에서 10px 떨어진 위치 */
+    right: 8px;  /* 우측에서 10px 떨어진 위치 */
+    background-color: rgba(255, 255, 255, 0.7);  /* 반투명 배경 */
+    border: none;
+    border-radius: 50%;  /* 원형 버튼 */
+    padding: 5px 5px;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);  /* 그림자 효과 */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.like-button:hover {
+    background-color: rgba(255, 0, 0, 0.8);  /* 호버 시 배경색 변경 */
+    color: white;
+    transform: scale(0.8);  /* 크기 확대 효과 */
+}
+.liked {
+    background-color: rgba(255, 0, 0, 1);  /* 클릭 시 완전 불투명 배경 */
+}

@@ -4,22 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File 업로드</title>
-    <style>
-        #book-list{
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            gap: 10px;
-        }
-        #book-list-item{
-            display: flex;
-            flex-direction: column;
-        }
-        img{
-            width: 140px;
-            height: 200px;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h1>File 업로드</h1>
@@ -35,5 +20,30 @@
         </div>
         {% endfor %}
     </div>
+
+    <form id="search" action="/" method="get">
+        <input type="text" style="width: 300px; height: 20px;" name="name" 
+           value="" placeholder="검색 하고 싶은 책 이름을 입력해 주세요 " required>
+        <button type="submit">검색</button>
+    </form>
+
+    <div id="book-list1">
+        {% for book in searchBookList %}
+            <div id="book-list-item1">
+                <div class="image-container">
+                    <img src = "{{book.url}}"/>
+                    <button class="like-button" style="z-index: 10;" id="{{book.itemId}}" value="{{book.liked}}">🩶</button>
+<!-- 
+                    <a href="{{book.link}}" target="_blank"  rel="noopener noreferrer"  >
+                        <img src = "{{book.url}}"/>
+                        <button class="like-button" style="z-index: 10;" value="{{book.itemId}}">🩶</button>
+                    </a> -->
+                </div>
+                <div> {{book.title}} </div>
+            </div>
+        {% endfor %}
+    </div>
+
 </body>
+    <script src="index.js"></script>
 </html>

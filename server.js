@@ -4,6 +4,7 @@ const dotevn = require('dotenv');
 const app = express();
 const book = require('./models');
 const multerUpload = require('./file.middleware');
+const { searchBook }  = require('./searchBook');
 
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -11,15 +12,16 @@ nunjucks.configure('views', {
 })
 
 app.use(express.static('uploads'));
+app.use(express.static('public'));
 
 app.use(express.urlencoded({extended:true}));
 
 app.get('/', async (req, res) => {
-    // 데이터 베이스에서 전체 목록 가져오기
-    // index.html 페이지 응답 내보내고 전체 목록 값 같이 보내기
+    const {name} = req.query;
+    const searchBookList = await searchBook(name, 10);
     const booklist = await book.findAll();
     res.render('index.html', { 
-            booklist 
+            booklist, searchBookList
         });
 });
 

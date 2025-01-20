@@ -11,6 +11,11 @@ class BookList extends Model {
                 path : {
                     type : DataTypes.STRING(100),
                     allowNull : false
+                },
+                liked : {
+                    type : DataTypes.BOOLEAN,
+                    defaultValue : false,
+                    allowNull : false
                 }
             },
             {
