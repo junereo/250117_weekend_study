@@ -25,10 +25,10 @@ app.get('/', async (req, res) => {
         });
 });
 
-app.get('/uploads/:id', async (req, res) => {
-    const id = parseInt(req.params.id);
+app.get('/uploads/:filename', async (req, res) => {
+    const filename = parseInt(req.params.filename);
     const booklist = await book.findOne({
-        where: { id:  id  }  
+        where: { filename:  filename  }  
       });
     res.render('view.html', {
         booklist
@@ -51,7 +51,7 @@ app.post('/upload', multerUpload.single('file'), async (req, res) => {
 
 // 서버 시작
 app.listen(3000,async () => {
-    await book.sync({force: false});
+    await book.sync({force: true});
     book.isSynchronized = true;
     console.log(`Server running on http://localhost:3000`);
 });
