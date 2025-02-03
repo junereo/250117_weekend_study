@@ -4,7 +4,7 @@ const dotevn = require('dotenv');
 const app = express();
 const book = require('./models');
 const multerUpload = require('./file.middleware');
-const { searchBook }  = require('./searchBook');
+const { searchBook, searchNewBook, searchOneBook }  = require('./searchBook');
 
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -18,20 +18,26 @@ app.use(express.urlencoded({extended:true}));
 
 app.get('/', async (req, res) => {
     const {name} = req.query;
-    const searchBookList = await searchBook(name, 10);
-    const booklist = await book.findAll();
+    const searchBookList = await searchBook(name, "Book", 10);
+    const searchNewBookList = await searchNewBook("ItemNewAll","Book", 10);
+    //console.log(searchNewBookList)
+    //const booklist = await book.findAll();
     res.render('index.html', { 
-            booklist, searchBookList
+             searchBookList, searchNewBookList
         });
 });
 
 app.get('/uploads/:filename', async (req, res) => {
     const filename = parseInt(req.params.filename);
-    const booklist = await book.findOne({
+    /*const booklist = await book.findOne({
         where: { filename:  filename  }  
       });
+    */
+    const [BookInfo] = await searchOneBook(filename);
+    console.log(BookInfo)
+      
     res.render('view.html', {
-        booklist
+        BookInfo
     })
 });
 
@@ -51,7 +57,7 @@ app.post('/upload', multerUpload.single('file'), async (req, res) => {
 
 // 서버 시작
 app.listen(3000,async () => {
-    await book.sync({force: true});
-    book.isSynchronized = true;
+    //await book.sync({force: true});
+    //book.isSynchronized = true;
     console.log(`Server running on http://localhost:3000`);
 });

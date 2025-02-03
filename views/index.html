@@ -26,12 +26,30 @@
            value="" placeholder="검색 하고 싶은 책 이름을 입력해 주세요 " required>
         <button type="submit">검색</button>
     </form>
-
+    <h1>검색도서</h1>
     <div id="book-list1">
         {% for book in searchBookList %}
             <div id="book-list-item1">
                 <div class="image-container">
-                    <img src = "{{book.url}}"/>
+                    <a href="/uploads/{{book.isbn13}}"><img src = "{{book.url}}"/></a>
+                    <button class="like-button" style="z-index: 10;" id="{{book.itemId}}" value="false">🩶</button>
+<!-- 
+                    <a href="{{book.link}}" target="_blank"  rel="noopener noreferrer"  >
+                        <img src = "{{book.url}}"/>
+                        <button class="like-button" style="z-index: 10;" value="{{book.itemId}}">🩶</button>
+                    </a> -->
+                </div>
+                <div> {{book.title}} </div>
+            </div>
+        {% endfor %}
+    </div>
+    <br/>
+    <h1>신간 도서</h1>
+    <div id="book-list2">
+        {% for book in searchNewBookList %}
+            <div id="book-list-item2">
+                <div class="image-container">
+                    <a href="/uploads/{{book.isbn13}}"><img src = "{{book.url}}"/></a>
                     <button class="like-button" style="z-index: 10;" id="{{book.itemId}}" value="false">🩶</button>
 <!-- 
                     <a href="{{book.link}}" target="_blank"  rel="noopener noreferrer"  >

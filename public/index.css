@@ -1,23 +1,23 @@
 
-#book-list{
+#book-list, #book-list1{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 10px;
 }
-#book-list-item{
+#book-list-item , #book-list-item1{
     display: flex;
     flex-direction: column;
 }
 
-#book-list1{
+#book-list1, #book-list2{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 10px;
 }
 
-#book-list-item1{
+#book-list-item1, #book-list-item2{
     display: flex;
     flex-direction: column;
     justify-content: center;

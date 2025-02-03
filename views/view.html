@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이미지 상세 보기</title>
     <style>
+        .content{
+            display: flex;
+        }
         #book-list-item{
             display: flex;
             flex-direction: column;
@@ -13,13 +16,28 @@
             width: 140px;
             height: 200px;
         }
+        #book-list-info{
+            width: 500px;
+        }
     </style>
 </head>
 <body>
     <h1>이미지 뷰</h1>
-    <div id="book-list-item">
-        <img src="/{{ booklist.path }}" alt="이미지 없음 ㅠ">
-        <a href="/">Back To Home!</a>
+    <div class="content">
+        <div id="book-list-item">
+            <img src="{{ BookInfo.cover }}" alt="이미지 없음 ㅠ">
+            <a href="/">Back To Home!</a>
+        </div>
+        <div id="book-list-info">
+            <ul>
+                <li><h1>{{ BookInfo.title }}</h1></li>
+                <li>{{ BookInfo.author }}</li>
+                <li>{{ BookInfo.pubDate }}</li>
+                <li>{{ BookInfo.description }}</li>
+                <li>{{ BookInfo.publisher }}</li>
+            </ul>
+        </div>
     </div>
+    
 </body>
 </html>
